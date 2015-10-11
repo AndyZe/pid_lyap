@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(lyap_control)
+project(pid_lyap)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -85,7 +85,7 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES lyap_control
+#  LIBRARIES pid_lyap
    CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
 #  DEPENDS system_lib
 )
@@ -98,39 +98,33 @@ catkin_package(
 ## Your package locations should be listed before other locations
 # include_directories(include)
 #include_directories(
-#  include/lyap_control/
+#  include/pid_lyap/
   #${catkin_INCLUDE_DIRS}
 #)
 include_directories(include ${catkin_INCLUDE_DIRS})
 
 ## Declare a cpp library
-# add_library(lyap_control
-#   src/${PROJECT_NAME}/lyap_control.cpp
+# add_library(pid_lyap
+#   src/${PROJECT_NAME}/pid_lyap.cpp
 # )
 
 ## Declare a cpp executable
-#add_executable(lyap_control_node src/lyap_control_node.cpp)
-add_executable(controller src/controller.cpp)
-add_executable(first_order_plant src/first_order_plant_sim.cpp)
-add_executable(second_order_plant src/second_order_plant_sim.cpp)
-add_executable(very_large_system src/very_large_system.cpp)
+#add_executable(pid_lyap_node src/pid_lyap_node.cpp)
+add_executable(lyap_controller src/lyap_controller.cpp)
+add_executable(plant src/plant.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(lyap_control_node lyap_control_generate_messages_cpp)
-add_dependencies(controller lyap_control_generate_messages_cpp)
-add_dependencies(first_order_plant lyap_control_generate_messages_cpp)
-add_dependencies(second_order_plant lyap_control_generate_messages_cpp)
-add_dependencies(very_large_system lyap_control_generate_messages_cpp)
+# add_dependencies(pid_lyap_node pid_lyap_generate_messages_cpp)
+add_dependencies(lyap_controller pid_lyap_generate_messages_cpp)
+add_dependencies(plant pid_lyap_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(lyap_control_node
+# target_link_libraries(pid_lyap_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(controller ${catkin_LIBRARIES})
-target_link_libraries(first_order_plant ${catkin_LIBRARIES})
-target_link_libraries(second_order_plant ${catkin_LIBRARIES})
-target_link_libraries(very_large_system ${catkin_LIBRARIES})
+target_link_libraries(lyap_controller ${catkin_LIBRARIES})
+target_link_libraries(plant ${catkin_LIBRARIES})
 
 #############
 ## Install ##
@@ -147,7 +141,7 @@ target_link_libraries(very_large_system ${catkin_LIBRARIES})
 # )
 
 ## Mark executables and/or libraries for installation
-install(TARGETS controller first_order_plant second_order_plant
+install(TARGETS lyap_controller plant
 #  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -172,7 +166,7 @@ install(DIRECTORY include/${PROJECT_NAME}/
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_lyap_control.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_pid_lyap.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <package>
-  <name>lyap_control</name>
-  <version>0.0.11</version>
-  <description>A node to control nonlinear dynamic systems</description>
+  <name>pid_lyap</name>
+  <version>0.0.0</version>
+  <description>Compare the PID and switched Lyapunov controllers on the same system.</description>
 
    <maintainer email="andyz@utexas.edu">Andy Zelenak</maintainer>
 
   <license>BSD</license>
 
-  <url type="website">http://wiki.ros.org/lyap_control</url>
+  <!-- <url type="website">http://</url> -->
 
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->

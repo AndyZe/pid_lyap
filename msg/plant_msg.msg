@@ -1,3 +1,3 @@
-float64[14] x
+float64[1] x
 float64 t
-float64[14] setpoint
+float64[1] setpoint
