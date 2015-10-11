@@ -112,12 +112,14 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 #add_executable(pid_lyap_node src/pid_lyap_node.cpp)
 add_executable(lyap_controller src/lyap_controller.cpp)
 add_executable(plant src/plant.cpp)
+add_executable(pid_controller src/pid_controller.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
 # add_dependencies(pid_lyap_node pid_lyap_generate_messages_cpp)
 add_dependencies(lyap_controller pid_lyap_generate_messages_cpp)
 add_dependencies(plant pid_lyap_generate_messages_cpp)
+add_dependencies(pid_controller pid_lyap_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(pid_lyap_node
@@ -125,6 +127,7 @@ add_dependencies(plant pid_lyap_generate_messages_cpp)
 # )
 target_link_libraries(lyap_controller ${catkin_LIBRARIES})
 target_link_libraries(plant ${catkin_LIBRARIES})
+target_link_libraries(pid_controller ${catkin_LIBRARIES})
 
 #############
 ## Install ##
@@ -141,7 +144,7 @@ target_link_libraries(plant ${catkin_LIBRARIES})
 # )
 
 ## Mark executables and/or libraries for installation
-install(TARGETS lyap_controller plant
+install(TARGETS lyap_controller pid_controller plant
 #  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
