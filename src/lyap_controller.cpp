@@ -12,8 +12,8 @@
 /////////////////////////////////////////////////////////////////////////////////////////
 
 static const double V_dot_target_initial= -1.0;
-static const double high_saturation_limit [] = {1.};
-static const double low_saturation_limit []= {-1.};
+static const double high_saturation_limit [] = {1., 1.};
+static const double low_saturation_limit []= {-1., -1.};
 
 // Control frequency in Hz. Should be > the msg frequency that's published by the plant
 static const double rate = 10000.0;

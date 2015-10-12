@@ -41,8 +41,13 @@ int main(int argc, char **argv)
     // Update the plant.
     x_dot[0] = msg.x[0]+u[0];
     msg.x[0] = msg.x[0]+x_dot[0]*delta_t;
+
+    x_dot[1] = msg.x[1]-100.*u[1];
+    msg.x[1] = msg.x[1]+x_dot[1]*delta_t;
+
     msg.t = msg.t+delta_t;
     msg.setpoint[0] = sin(4.*msg.t*msg.t);
+    msg.setpoint[1] = msg.t;
 
     ros::spinOnce();
 
@@ -59,4 +64,5 @@ void chatterCallback(const pid_lyap::controller_msg& u_msg)
 
   // Define the stabilizing control effort
   u[0] = u_msg.u[0];
+  u[1] = u_msg.u[1];
 }

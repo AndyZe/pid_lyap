@@ -11,7 +11,7 @@ using namespace std;
 #include "pid_lyap/controller_msg.h"
 
 float prev_time = 0.0;
-float delta_t = 0.0;
+float delta_t = 0.0001;
 float error_integral = 0.0;
 
 float Kp, Ki, Kd, rate; //Rate in Hz.

@@ -4,4 +4,5 @@
 void model_definition(const ublas_vector &x, ublas_vector &dxdt, const double t)
 {
   dxdt[0] = x[0]+u[0];
+  dxdt[1] = x[1]-100.*u[1];
 }
